@@ -1,0 +1,33 @@
+
+[Vista]
+Icono=0
+Clave=svTipoLocal
+Nombre=svTipoLocal
+Modulos=(Todos)
+Singular=svTipoLocal
+ListaTablas=svTipoLocal
+TablaPrincipal=svTipoLocal
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=svTipoLocal.TipoLocal
+SQL=(Lista)
+[svTipoLocal.TipoLocal]
+Clave=svTipoLocal.TipoLocal
+Nombre=Tipo Local
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+LigaTabla=svTipoLocal
+LigaCampo=TipoLocal
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=TipoLocal
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=svTipoLocal.TipoLocal
+svTipoLocal.TipoLocal=FROM svTipoLocal
+FROM svTipoLocal=(Fin)

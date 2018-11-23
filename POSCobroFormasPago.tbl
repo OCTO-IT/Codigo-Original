@@ -1,0 +1,226 @@
+
+[Tabla]
+Icono=0
+Clave=POSCobroFormasPago
+Nombre=POSCobroFormasPago
+Archivo=POSCobroFormasPago
+Modulos=(Todos)
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+LlavePrimaria=(Lista)
+ControlEmpresas=S
+CampoEmpresa=Empresa
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=(Lista)
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+
+ValorPorOmision=Info.Sucursal
+[F2]
+Clave=F2
+Nombre=F2
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existe o no corresponde a una forma de pago (<T>+F2+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F2)
+[F3]
+Clave=F3
+Nombre=F3
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existeo no corresponde a una forma de pago (<T>+F3+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F3)
+[F4]
+Clave=F4
+Nombre=F4
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existe o no corresponde a una forma de pago (<T>+F4+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F4)
+[F5]
+Clave=F5
+Nombre=F5
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existe o no corresponde a una forma de pago (<T>+F5+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F5)
+[F6]
+Clave=F6
+Nombre=F6
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Códigono existe o no corresponde a una forma de pago (<T>+F6+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F6)
+[F7]
+Clave=F7
+Nombre=F7
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+ValorPorOmision=<T> <T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existe o no corresponde a una forma de pago (<T>+F7+<T>)<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F7)
+[F8]
+Clave=F8
+Nombre=F8
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=POSCBFormaPagoLista
+AyudaVista=POSCBFormaPago
+AyudaCampo=POSCBFormaPago.Codigo
+
+ValorPorOmision=<T> <T>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Código no existe o no corresponde a una forma de pago (<T>+F8+<T>)<T>
+
+
+
+
+
+
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPOSValidarCapturaFormaPago(:tCodigo)<T>,F8)
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=Empresa
+Empresa=Sucursal
+Sucursal=F2
+F2=F3
+F3=F4
+F4=F5
+F5=F6
+F6=F7
+F7=F8
+F8=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Empresa,
+Empresa,=Sucursal,
+Sucursal,=F2,
+F2,=F3,
+F3,=F4,
+F4,=F5,
+F5,=F6,
+F6,=F7,
+F7,=F8
+F8=FROM POSCobroFormasPago
+FROM POSCobroFormasPago=(Fin)
+
+[Tabla.LlavePrimaria]
+(Inicio)=Empresa
+Empresa=Sucursal
+Sucursal=(Fin)

@@ -1,0 +1,77 @@
+
+[Tabla]
+Icono=0
+Clave=POSCierreSucursalTemp
+Nombre=POSCierreSucursalTemp
+Archivo=POSCierreSucursalTemp
+Modulos=(Todos)
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+LlavePrimaria=Estacion
+ControlMov=S
+CampoMov=Mov
+SQL=(Lista)
+[Estacion]
+Clave=Estacion
+Nombre=Estacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=EstacionTrabajo
+[Fecha]
+Clave=Fecha
+Nombre=Fecha Trabajo Nueva
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+ValidacionConCondiciones=S
+Requerido=S
+ValidacionMensajeError=<T>La fecha debe ser mayor a <T>+hoy
+ValidacionCondicion=Fecha> Hoy
+[Mov]
+Clave=Mov
+Nombre=Movimiento Generar
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+
+Requerido=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Mov FROM MovTipo WHERE Clave IN(:tClave1,:tClave2)<T>,<T>POS.CC<T>,<T>POS.CCM<T>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=Estacion
+Estacion=Fecha
+Fecha=Mov
+Mov=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Estacion,
+Estacion,=Fecha,
+Fecha,=Mov
+Mov=FROM POSCierreSucursalTemp
+FROM POSCierreSucursalTemp=(Fin)

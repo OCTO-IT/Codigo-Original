@@ -1,0 +1,81 @@
+
+[Tabla]
+Icono=0
+Clave=svFondoProyecto
+Nombre=svFondoProyecto
+Archivo=svFondoProyecto
+Modulos=(Todos)
+Singular=svFondoProyecto
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+ListaRelaciones=SVProyectoGral
+LlavePrimaria=(Lista)
+SQL=(Lista)
+[Proyecto]
+Clave=Proyecto
+Nombre=Proyecto
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+ValorPorOmision=Info.SVProyecto
+ValidacionUsaTabla=S
+ValidacionTablas=SVProyectoGral
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>select valor from svproyectomtro where Maestro=:t1<T>,<T>FONDEO<T>)
+[Monto]
+Clave=Monto
+Nombre=Monto
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+Monetario=S
+[Relaciones.SVProyectoGral]
+TipoRelacion=Forzosa
+LlaveLocal=Proyecto
+Clave=SVProyectoGral
+TablaRemota=SVProyectoGral
+LlaveRemota=Proyecto
+
+
+
+
+[Concepto.ListaOpciones]
+(Inicio)=Fondeo Propio
+Fondeo Propio=Fondeo Terceros
+Fondeo Terceros=(Fin)
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=Proyecto
+Proyecto=Concepto
+Concepto=Monto
+Monto=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Proyecto,
+Proyecto,=Concepto,
+Concepto,=Monto
+Monto=FROM svFondoProyecto
+FROM svFondoProyecto=(Fin)
+
+[Tabla.LlavePrimaria]
+(Inicio)=Proyecto
+Proyecto=Concepto
+Concepto=(Fin)

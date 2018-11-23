@@ -1,0 +1,239 @@
+
+[Vista]
+Icono=0
+Clave=SVProyectoSubEtapa
+Nombre=SVProyectoSubEtapa
+Modulos=(Todos)
+Singular=SVProyectoSubEtapa
+ListaTablas=SVProyectoSubEtapa
+TablaPrincipal=SVProyectoSubEtapa
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=(Lista)
+ListaCalculados=(Lista)
+
+
+
+
+
+SQL=(Lista)
+[TotalUnidades]
+Clave=TotalUnidades
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Unidades Sub Etapa
+
+
+
+
+
+
+
+
+
+LigaTabla=SVProyectoSubEtapa
+TipoCalculo=De la misma vista
+
+
+
+
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoSubEtapa.SubEtapa,4,4,SVProyectoSubEtapa.Proyecto)
+[TotalTerreno]
+Clave=TotalTerreno
+TipoDatos=NumFlotante
+LigaTabla=SVProyectoSubEtapa
+TipoCampo=Calculado
+TipoCalculo=De la misma vista
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Total Terreno
+
+FormatoValidacion=#,.00
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoSubEtapa.SubEtapa,4,1,SVProyectoSubEtapa.Proyecto)
+[TotalConstruccion]
+Clave=TotalConstruccion
+TipoDatos=NumFlotante
+LigaTabla=SVProyectoSubEtapa
+TipoCampo=Calculado
+TipoCalculo=De la misma vista
+FormatoValidacion=#,.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Total Construccion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoSubEtapa.SubEtapa,4,2,SVProyectoSubEtapa.Proyecto)
+[SVProyectoSubEtapa.Etapa]
+Clave=SVProyectoSubEtapa.Etapa
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=Etapa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Etapa
+
+[SVProyectoSubEtapa.SubEtapa]
+Clave=SVProyectoSubEtapa.SubEtapa
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=SubEtapa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=SubEtapa
+
+[SVProyectoSubEtapa.Descripcion]
+Clave=SVProyectoSubEtapa.Descripcion
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=Descripcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=Descripcion
+
+[SVProyectoSubEtapa.UnidadesXEtapa]
+Clave=SVProyectoSubEtapa.UnidadesXEtapa
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=UnidadesXEtapa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=UnidadesXEtapa
+
+[SVProyectoSubEtapa.Proyecto]
+Clave=SVProyectoSubEtapa.Proyecto
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=Proyecto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Proyecto
+
+[SVProyectoSubEtapa.Fase]
+Clave=SVProyectoSubEtapa.Fase
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=Fase
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Fase
+
+[SVProyectoSubEtapa.RenglonID]
+Clave=SVProyectoSubEtapa.RenglonID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=SQL(<T>spCorrelativoProy :t1, :t2, :t3, :t4<T>,<T>SUBETAPA<T>,Info.SVProyecto,Info.SVFase,Info.SVEtapa)
+LigaTabla=SVProyectoSubEtapa
+LigaCampo=RenglonID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=RenglonID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[TotalTerrenoV2]
+Clave=TotalTerrenoV2
+TipoDatos=NumFlotante
+LigaTabla=SVProyectoSubEtapa
+TipoCampo=Calculado
+TipoCalculo=De la misma vista
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Terreno V2
+
+FormatoValidacion=#,.00
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoSubEtapa.SubEtapa,4,1,SVProyectoSubEtapa.Proyecto)*1.430828
+[TotalConstruccionV2]
+Clave=TotalConstruccionV2
+TipoDatos=NumFlotante
+LigaTabla=SVProyectoSubEtapa
+TipoCampo=Calculado
+TipoCalculo=De la misma vista
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Construccion V2
+
+
+
+
+
+
+
+
+
+
+FormatoValidacion=#,.00
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoSubEtapa.SubEtapa,4,2,SVProyectoSubEtapa.Proyecto)*1.430828
+
+
+
+[Vista.ListaCampos]
+(Inicio)=SVProyectoSubEtapa.Etapa
+SVProyectoSubEtapa.Etapa=SVProyectoSubEtapa.SubEtapa
+SVProyectoSubEtapa.SubEtapa=SVProyectoSubEtapa.Descripcion
+SVProyectoSubEtapa.Descripcion=SVProyectoSubEtapa.UnidadesXEtapa
+SVProyectoSubEtapa.UnidadesXEtapa=SVProyectoSubEtapa.Proyecto
+SVProyectoSubEtapa.Proyecto=SVProyectoSubEtapa.Fase
+SVProyectoSubEtapa.Fase=SVProyectoSubEtapa.RenglonID
+SVProyectoSubEtapa.RenglonID=(Fin)
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=SVProyectoSubEtapa.Etapa,
+SVProyectoSubEtapa.Etapa,=SVProyectoSubEtapa.SubEtapa,
+SVProyectoSubEtapa.SubEtapa,=SVProyectoSubEtapa.Descripcion,
+SVProyectoSubEtapa.Descripcion,=SVProyectoSubEtapa.UnidadesXEtapa,
+SVProyectoSubEtapa.UnidadesXEtapa,=SVProyectoSubEtapa.Proyecto,
+SVProyectoSubEtapa.Proyecto,=SVProyectoSubEtapa.Fase,
+SVProyectoSubEtapa.Fase,=SVProyectoSubEtapa.RenglonID
+SVProyectoSubEtapa.RenglonID=FROM SVProyectoSubEtapa
+FROM SVProyectoSubEtapa=(Fin)
+
+[Vista.ListaCalculados]
+(Inicio)=TotalTerreno
+TotalTerreno=TotalConstruccion
+TotalConstruccion=TotalUnidades
+TotalUnidades=TotalTerrenoV2
+TotalTerrenoV2=TotalConstruccionV2
+TotalConstruccionV2=(Fin)

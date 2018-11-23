@@ -1,0 +1,119 @@
+[Vista]
+Icono=0
+Clave=MovTipoConsecutivo_SV
+Modulos=(Todos)
+ListaTablas=MovTipoConsecutivo_SV
+TablaPrincipal=MovTipoConsecutivo_SV
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=MovTipoConsecutivo_SV.ID_MTCSV<BR>MovTipoConsecutivo_SV.EmpresaSV<BR>MovTipoConsecutivo_SV.SucursalSV<BR>MovTipoConsecutivo_SV.CtaDineroSV<BR>MovTipoConsecutivo_SV.ModuloSV<BR>MovTipoConsecutivo_SV.MovSV<BR>MovTipoConsecutivo_SV.EstatusSV<BR>MovTipoConsecutivo_SV.CantidadMinima
+CamposBusquedaRapida=MovTipoConsecutivo_SV.ID_MTCSV
+ListaCalculados=NombreEmpresa<BR>NombreSucursal<BR>NombreCtaDinero<BR>NombreModulo
+SQL=SELECT<BR>  MovTipoConsecutivo_SV.ID_MTCSV,<BR>  MovTipoConsecutivo_SV.EmpresaSV,<BR>  MovTipoConsecutivo_SV.SucursalSV,<BR>  MovTipoConsecutivo_SV.CtaDineroSV,<BR>  MovTipoConsecutivo_SV.ModuloSV,<BR>  MovTipoConsecutivo_SV.MovSV,<BR>  MovTipoConsecutivo_SV.EstatusSV,<BR>  MovTipoConsecutivo_SV.CantidadMinima<BR><BR>FROM<BR>  MovTipoConsecutivo_SV
+[NombreEmpresa]
+Clave=NombreEmpresa
+Tamano=100
+TipoCampo=Calculado
+TamanoValidacion=100
+Alineacion=por Omisión
+Nombre=Nombre Empresa
+Formula=SQL(<T>SELECT Nombre FROM Empresa WHERE Empresa = :t1<T>,MovTipoConsecutivo_SV.EmpresaSV)
+[NombreSucursal]
+Clave=NombreSucursal
+Tamano=100
+TipoCampo=Calculado
+TamanoValidacion=100
+Alineacion=por Omisión
+Nombre=Nombre Sucursal
+Formula=SQL(<T>SELECT Nombre FROM Sucursal WHERE Sucursal = :n1<T>,MovTipoConsecutivo_SV.SucursalSV)
+[NombreCtaDinero]
+Clave=NombreCtaDinero
+Tamano=100
+TipoCampo=Calculado
+TamanoValidacion=100
+Alineacion=por Omisión
+Nombre=Nombre Cuenta Dinero
+Formula=SQL(<T>SELECT Descripcion FROM CtaDinero WHERE CtaDinero = :t1<T>,MovTipoConsecutivo_SV.CtaDineroSV)
+[NombreModulo]
+Clave=NombreModulo
+Tamano=50
+TipoCampo=Calculado
+TamanoValidacion=50
+Alineacion=por Omisión
+Nombre=Nombre Módulo
+Formula=SQL(<T>SELECT Nombre FROM Modulo WHERE Modulo = :t1<T>,MovTipoConsecutivo_SV.ModuloSV)
+[MovTipoConsecutivo_SV.ID_MTCSV]
+Clave=MovTipoConsecutivo_SV.ID_MTCSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=ID_MTCSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID_MTCSV
+[MovTipoConsecutivo_SV.EmpresaSV]
+Clave=MovTipoConsecutivo_SV.EmpresaSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=EmpresaSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=EmpresaSV
+[MovTipoConsecutivo_SV.SucursalSV]
+Clave=MovTipoConsecutivo_SV.SucursalSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=SucursalSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=SucursalSV
+[MovTipoConsecutivo_SV.CtaDineroSV]
+Clave=MovTipoConsecutivo_SV.CtaDineroSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=CtaDineroSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=CtaDineroSV
+[MovTipoConsecutivo_SV.ModuloSV]
+Clave=MovTipoConsecutivo_SV.ModuloSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=ModuloSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=ModuloSV
+[MovTipoConsecutivo_SV.MovSV]
+Clave=MovTipoConsecutivo_SV.MovSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=MovSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovSV
+[MovTipoConsecutivo_SV.EstatusSV]
+Clave=MovTipoConsecutivo_SV.EstatusSV
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=EstatusSV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=4
+ClaveBDE=EstatusSV
+[MovTipoConsecutivo_SV.CantidadMinima]
+Clave=MovTipoConsecutivo_SV.CantidadMinima
+Nombre=CantidadMinima
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=MovTipoConsecutivo_SV
+LigaCampo=CantidadMinima
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=CantidadMinima

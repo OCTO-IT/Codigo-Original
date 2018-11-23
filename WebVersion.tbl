@@ -1,0 +1,92 @@
+
+[Tabla]
+Icono=0
+Clave=WebVersion
+Nombre=WebVersion
+Archivo=WebVersion
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=(Lista)
+CampoID=ID
+LlavePrimaria=version
+
+SQL=(Lista)
+[WebUsuario]
+Clave=WebUsuario
+Nombre=eCommerce Usuario
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+AyudaEnCaptura=Vista
+AyudaForma=UsuarioLista
+AyudaVista=UsuarioA
+AyudaCampo=Usuario.Usuario
+[DropBox]
+Clave=DropBox
+Nombre=DropBox
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+
+AyudaEnCaptura=Buscar Directorio
+[WebArtDescripcion]
+Clave=WebArtDescripcion
+Nombre=Descripción Articulo HTML
+Visible=S
+TamanoValidacion=255
+TipoDatos=Memo
+Tamano=0
+
+AdvMemoEstilo=HTML
+[WebArtDirectorio]
+Clave=WebArtDirectorio
+Nombre=Directorio Imágenes Artículos Web
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+AyudaEnCaptura=Buscar Directorio
+
+[version]
+Clave=version
+Nombre=version
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=SQL(<T>SELECT Version FROM Version<T>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=WebUsuario
+WebUsuario=DropBox
+DropBox=WebArtDescripcion
+WebArtDescripcion=WebArtDirectorio
+WebArtDirectorio=version
+version=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=version,
+version,=DropBox,
+DropBox,=WebArtDirectorio,
+WebArtDirectorio,=WebUsuario,
+WebUsuario,=WebArtDescripcion
+WebArtDescripcion=FROM WebVersion
+FROM WebVersion=(Fin)

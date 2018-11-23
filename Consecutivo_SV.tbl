@@ -1,0 +1,110 @@
+[Tabla]
+Icono=0
+Clave=Consecutivo_SV
+Archivo=Consecutivo_SV
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID_CSV<BR>ID_MTCSV<BR>Serie<BR>ConsecutivoD<BR>ConsecutivoH<BR>VigenciaD<BR>VigenciaH<BR>Anio<BR>EstatusSV<BR>Resolucion
+LlavePrimaria=ID_CSV
+EstatusDefault=BORRADOR
+ListaRelaciones=MovTipoConsecutivo_SV
+SQL=SELECT<BR>  ID_CSV,<BR>  ID_MTCSV,<BR>  Serie,<BR>  ConsecutivoD,<BR>  ConsecutivoH,<BR>  VigenciaD,<BR>  VigenciaH,<BR>  Anio,<BR>  EstatusSV,<BR>  Resolucion<BR><BR>FROM<BR>  Consecutivo_SV
+[ID_CSV]
+Clave=ID_CSV
+Nombre=ID Consecutivo_SV
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+LlavePrimariaEnBlanco=S
+UnicamenteLectura=S
+[ID_MTCSV]
+Clave=ID_MTCSV
+Nombre=ID MovTipoConsecutivo_SV
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=ConsecutivosSV.ID_MTCSV
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Requerido=S
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>
+Mayusculas=S
+[ConsecutivoD]
+Clave=ConsecutivoD
+Nombre=Consecutivo Desde
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorMinimo=1
+Requerido=S
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>
+[ConsecutivoH]
+Clave=ConsecutivoH
+Nombre=Consecutivo Hasta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorMinimo=ConsecutivoD
+Requerido=S
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>
+[VigenciaD]
+Clave=VigenciaD
+Nombre=Fecha Autorización
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+Requerido=S
+ConRefrescar=S
+ListaRefrescar=Anio
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>
+[VigenciaH]
+Clave=VigenciaH
+Nombre=Fecha Concluido
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[Anio]
+Clave=Anio
+Nombre=Año
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Requerido=S
+ValorRefrescar=Año( VigenciaD )
+[EstatusSV]
+Clave=EstatusSV
+Nombre=Estatus
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Vista
+AyudaForma=EstatusListaCSV
+AyudaVista=Estatus
+AyudaCampo=Estatus.Estatus
+ValorPorOmision=<T>BORRADOR<T>
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>
+ValidacionConCondiciones=S
+ValidacionMensajeError=SQL(<T>IF (:t1 IN (:t2,:t3,:t4))<BR>     BEGIN<BR>         IF (:t5 = :t6)<BR>         BEGIN<BR>             IF EXISTS (SELECT * FROM Consecutivo_SV WHERE ID_MTCSV = :n1 AND EstatusSV = :t7 AND ID_CSV <> :n2)<BR>             BEGIN<BR>                 SELECT :t8<BR>             END<BR>         END<BR>     END<BR>     ELSE<BR>     BEGIN<BR>         SELECT :t9<BR>     END<T>,EstatusSV,<T>BORRADOR<T>,<T>CANCELADO<T>,<T>ACTIVO<T>,EstatusSV,<T>ACTIVO<T>,ID_MTCSV,<T>ACTIVO<T>,ID_CSV,<T>No pueden existir dos Consecutivos con Estatus Activo<T>,<T>No es un valor válido<T>)
+ValidacionCondicion=SQL(<T>IF (:t1 IN (:t2,:t3,:t4))<BR>     BEGIN<BR>         IF (:t5 = :t6)<BR>         BEGIN<BR>             IF EXISTS (SELECT * FROM Consecutivo_SV WHERE ID_MTCSV = :n1 AND EstatusSV = :t7 AND ID_CSV <> :n2)<BR>             BEGIN<BR>                 SELECT 0<BR>             END<BR>             ELSE<BR>             BEGIN<BR>                 SELECT 1<BR>             END<BR>         END<BR>         ELSE<BR>         BEGIN<BR>             SELECT 1<BR>         END<BR>     END<BR>     ELSE<BR>     BEGIN<BR>         SELECT 0<BR>     END<T>,EstatusSV,<T>BORRADOR<T>,<T>CANCELADO<T>,<T>ACTIVO<T>,EstatusSV,<T>ACTIVO<T>,ID_MTCSV,<T>ACTIVO<T>,ID_CSV) = 1
+TipoDatos=Texto
+[Relaciones.MovTipoConsecutivo_SV]
+TipoRelacion=Forzosa
+LlaveLocal=ID_MTCSV
+Clave=MovTipoConsecutivo_SV
+TablaRemota=MovTipoConsecutivo_SV
+LlaveRemota=ID_MTCSV
+[Resolucion]
+Clave=Resolucion
+Nombre=Resolución
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+Requerido=S
+CondicionEdicion=EstatusSV = <T>BORRADOR<T>

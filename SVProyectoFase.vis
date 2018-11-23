@@ -1,0 +1,301 @@
+
+[Vista]
+Icono=0
+Clave=SVProyectoFase
+Nombre=SVProyectoFase
+Modulos=(Todos)
+Singular=SVProyectoFase
+ListaTablas=SVProyectoFase
+
+TablaPrincipal=SVProyectoFase
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=(Lista)
+
+
+
+
+
+
+
+
+
+
+
+
+
+ListaCalculados=(Lista)
+
+
+
+
+
+
+
+UsarJOIN=S
+SQL=(Lista)
+[TotalTerreno]
+Clave=TotalTerreno
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Total Terreno (Mts2)
+
+FormatoValidacion=#,.00
+LigaTabla=SVProyectoFase
+TipoCalculo=De la misma vista
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,1,SVProyectoFase.Proyecto)
+[TotalConstruccion]
+Clave=TotalConstruccion
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Total Construccion
+
+FormatoValidacion=#,.00
+LigaTabla=SVProyectoFase
+TipoCalculo=De la misma vista
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,2,SVProyectoFase.Proyecto)
+[TotalAC]
+Clave=TotalAC
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Terreno Comun
+
+FormatoValidacion=#,.00
+TipoCalculo=De la misma vista
+LigaTabla=SVProyectoFase
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,5,SVProyectoFase.Proyecto)
+[TotalUnidades]
+Clave=TotalUnidades
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Unidades por Cond.
+Cantidad=S
+
+
+
+
+
+TipoCalculo=De la misma vista
+LigaTabla=SVProyectoFase
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,4,SVProyectoFase.Proyecto)
+[TotalVendible]
+Clave=TotalVendible
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Área Total Vendible
+
+FormatoValidacion=#,.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TipoCalculo=De la misma vista
+LigaTabla=SVProyectoFase
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,3,SVProyectoFase.Proyecto)
+[Vista.ListaTablas]
+(Inicio)=SVProyectoFase
+SVProyectoFase=SVProyectoGral
+SVProyectoGral=(Fin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[TotalTerrenoV2]
+Clave=TotalTerrenoV2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Terreno V2
+LigaTabla=SVProyectoFase
+TipoCalculo=De la misma vista
+
+FormatoValidacion=#,.00
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,1,SVProyectoFase.Proyecto)*1.4308
+[TotalConstruccionV2]
+Clave=TotalConstruccionV2
+TipoDatos=NumFlotante
+LigaTabla=SVProyectoFase
+TipoCampo=Calculado
+TipoCalculo=De la misma vista
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Terreno Construccion V2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FormatoValidacion=#,.00
+FormulaSQL=SELECT dbo.fnSVTotalesProy (SVProyectoFase.Fase,2,2,SVProyectoFase.Proyecto)*1.4308
+[SVProyectoFase.Proyecto]
+Clave=SVProyectoFase.Proyecto
+LigaTabla=SVProyectoFase
+LigaCampo=Proyecto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Proyecto
+
+[SVProyectoFase.Fase]
+Clave=SVProyectoFase.Fase
+LigaTabla=SVProyectoFase
+LigaCampo=Fase
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Fase
+
+[SVProyectoFase.Descripcion]
+Clave=SVProyectoFase.Descripcion
+LigaTabla=SVProyectoFase
+LigaCampo=Descripcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=Descripcion
+
+[SVProyectoFase.Estatus]
+Clave=SVProyectoFase.Estatus
+LigaTabla=SVProyectoFase
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+
+[SVProyectoFase.RenglonID]
+Clave=SVProyectoFase.RenglonID
+LigaTabla=SVProyectoFase
+LigaCampo=RenglonID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=RenglonID
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Vista.ListaCampos]
+(Inicio)=SVProyectoFase.Proyecto
+SVProyectoFase.Proyecto=SVProyectoFase.Fase
+SVProyectoFase.Fase=SVProyectoFase.Descripcion
+SVProyectoFase.Descripcion=SVProyectoFase.Estatus
+SVProyectoFase.Estatus=SVProyectoFase.RenglonID
+SVProyectoFase.RenglonID=(Fin)
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=SVProyectoFase.Proyecto,
+SVProyectoFase.Proyecto,=SVProyectoFase.Fase,
+SVProyectoFase.Fase,=SVProyectoFase.Descripcion,
+SVProyectoFase.Descripcion,=SVProyectoFase.Estatus,
+SVProyectoFase.Estatus,=SVProyectoFase.RenglonID
+SVProyectoFase.RenglonID=FROM SVProyectoFase
+FROM SVProyectoFase=(Fin)
+
+[Vista.ListaCalculados]
+(Inicio)=TotalTerreno
+TotalTerreno=TotalConstruccion
+TotalConstruccion=TotalAC
+TotalAC=TotalUnidades
+TotalUnidades=TotalVendible
+TotalVendible=TotalTerrenoV2
+TotalTerrenoV2=TotalConstruccionV2
+TotalConstruccionV2=(Fin)

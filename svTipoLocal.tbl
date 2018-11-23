@@ -1,0 +1,27 @@
+
+[Tabla]
+Icono=0
+Clave=svTipoLocal
+Nombre=svTipoLocal
+Archivo=svTipoLocal
+Modulos=(Todos)
+Singular=svTipoLocal
+
+TipoTabla=General
+ListaCampos=TipoLocal
+
+SQL=(Lista)
+LlavePrimaria=TipoLocal
+[TipoLocal]
+Clave=TipoLocal
+Nombre=Tipo Local
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=TipoLocal
+TipoLocal=FROM svTipoLocal
+FROM svTipoLocal=(Fin)

@@ -1,0 +1,29 @@
+
+[Tabla]
+Icono=0
+Clave=SVCfgLCProvExcluidos
+Nombre=SVCfgLCProvExcluidos
+Archivo=SVCfgLCProvExcluidos
+Modulos=(Todos)
+Singular=SVCfgLCProvExcluidos
+
+TipoTabla=General
+ListaCampos=Proveedor
+
+SQL=(Lista)
+LlavePrimaria=Proveedor
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Proveedor
+Proveedor=FROM SVCfgLCProvExcluidos
+FROM SVCfgLCProvExcluidos=(Fin)

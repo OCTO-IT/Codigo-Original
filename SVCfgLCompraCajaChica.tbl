@@ -1,0 +1,94 @@
+
+[Tabla]
+Icono=0
+Clave=SVCfgLCompraCajaChica
+Nombre=SVCfgLCompraCajaChica
+Archivo=SVCfgLCompraCajaChica
+Modulos=(Todos)
+Singular=SVCfgLCompraCajaChica
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+LlavePrimaria=(Lista)
+CamposBusquedaRapida=TipoDocumento
+SQL=(Lista)
+[OpcionTipoDoc]
+Clave=OpcionTipoDoc
+Nombre=Doc. En Caja Chica
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+[TipoDocumento]
+Clave=TipoDocumento
+Nombre=Tipo de Documento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+ListaOpciones=(Lista)
+[EsProyecto]
+Clave=EsProyecto
+Nombre=Es Proyecto
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+
+
+
+
+
+
+
+
+
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+
+
+
+
+[TipoDocumento.ListaOpciones]
+(Inicio)=Factura
+Factura=Credito Fiscal
+Credito Fiscal=Recibo
+Recibo=Factura Exp
+Factura Exp=Comp. Donacion
+Comp. Donacion=Nota Credito
+Nota Credito=Nota Debito
+Nota Debito=N/A
+N/A=(Fin)
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=OpcionTipoDoc
+OpcionTipoDoc=TipoDocumento
+TipoDocumento=EsProyecto
+EsProyecto=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=OpcionTipoDoc,
+OpcionTipoDoc,=TipoDocumento,
+TipoDocumento,=EsProyecto
+EsProyecto=FROM SVCfgLCompraCajaChica
+FROM SVCfgLCompraCajaChica=(Fin)
+
+[Tabla.LlavePrimaria]
+(Inicio)=OpcionTipoDoc
+OpcionTipoDoc=TipoDocumento
+TipoDocumento=EsProyecto
+EsProyecto=(Fin)

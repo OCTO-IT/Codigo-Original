@@ -1,0 +1,100 @@
+[Tabla]
+Icono=0
+Clave=MovTipoConsecutivo_SV
+Archivo=MovTipoConsecutivo_SV
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID_MTCSV<BR>EmpresaSV<BR>SucursalSV<BR>CtaDineroSV<BR>ModuloSV<BR>MovSV<BR>EstatusSV<BR>CantidadMinima
+LlavePrimaria=ID_MTCSV
+ControlEstatus=S
+CampoEstatus=EstatusSV
+EstatusDefault=BAJA
+ControlEmpresas=S
+CampoEmpresa=EmpresaSV
+ControlSucursal=S
+CampoSucursal=SucursalSV
+SQL=SELECT<BR>  ID_MTCSV,<BR>  EmpresaSV,<BR>  SucursalSV,<BR>  CtaDineroSV,<BR>  ModuloSV,<BR>  MovSV,<BR>  EstatusSV,<BR>  CantidadMinima<BR><BR>FROM<BR>  MovTipoConsecutivo_SV
+[ID_MTCSV]
+Clave=ID_MTCSV
+Nombre=ID MovTipoConsecutivoSV
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+LlavePrimariaEnBlanco=S
+UnicamenteLectura=S
+[EmpresaSV]
+Clave=EmpresaSV
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+ValorRefrescar=SQL(<T>SELECT Empresa FROM CtaDinero WHERE CtaDinero = :t1<T>,CtaDineroSV)
+TipoDatos=Texto
+[SucursalSV]
+Clave=SucursalSV
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorRefrescar=SQL(<T>SELECT Sucursal FROM CtaDinero WHERE CtaDinero = :t1<T>,CtaDineroSV)
+[CtaDineroSV]
+Clave=CtaDineroSV
+Nombre=Cuenta Dinero
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ConRefrescar=S
+ListaRefrescar=EmpresaSV<BR>SucursalSV<BR>ModuloSV
+AyudaEnCaptura=Vista
+AyudaForma=CtaDineroListaConsecutivoSV
+AyudaVista=CtaDinero
+AyudaCampo=CtaDinero.CtaDinero
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>no es una Cuenta Dinero válida<T>
+ValidacionCondicion=SQL(<T>IF EXISTS (SELECT * FROM CtaDinero WHERE Tipo = :t1 AND Empresa = :t2 AND Sucursal = :n1 AND CtaDinero = :t3)<BR>SELECT :n2<BR>ELSE<BR>SELECT :n3<T>,<T>Caja<T>,Empresa,Sucursal,CtaDineroSV,1,0) = 1
+TipoDatos=Texto
+[ModuloSV]
+Clave=ModuloSV
+Nombre=Módulo
+Visible=S
+TamanoValidacion=5
+Tamano=5
+ValorRefrescar=<T>VTAS<T>
+TipoDatos=Texto
+[MovSV]
+Clave=MovSV
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=MovTipoListaConsecutivoSV
+AyudaVista=MovTipo
+AyudaCampo=MovTipo.Mov
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>no es un movimiento válido<T>
+ValidacionCondicion=SQL(<T>IF EXISTS (SELECT * FROM MovTipo WHERE Modulo = :t1 AND Mov = :t2 AND Mov IN (SELECT Mov FROM MovTipo WHERE Clave IN (:t3,:t4))) SELECT 1 ELSE SELECT 0<T>,<T>VTAS<T>,MovSV,<T>VTAS.F<T>,<T>VTAS.D<T>) = 1
+TipoDatos=Texto
+[EstatusSV]
+Clave=EstatusSV
+Nombre=Estatus
+Visible=S
+TamanoValidacion=4
+Tamano=4
+AyudaEnCaptura=Vista
+AyudaMemRenglones=2
+AyudaMemOpc=Unicamente opciones listadas
+AyudaForma=EstatusLista
+AyudaVista=Estatus
+AyudaCampo=Estatus.Estatus
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>no es un estatus válido<T>
+ValidacionCondicion=SQL(<T>IF EXISTS (SELECT * FROM MovTipo WHERE :t1 IN (:t2,:t3)) SELECT 1 ELSE SELECT 0<T>,EstatusSV,<T>BAJA<T>,<T>ALTA<T>) = 1
+[CantidadMinima]
+Clave=CantidadMinima
+Nombre=Cantidad Mínima
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora

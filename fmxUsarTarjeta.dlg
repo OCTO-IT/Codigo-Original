@@ -1,0 +1,55 @@
+
+[Dialogo]
+Clave=fmxUsarTarjeta
+Nombre=Usar Tarjeta
+Icono=368
+TipoMensaje=General
+TipoDialogo=Mensaje
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=(Lista)
+PosicionInicialIzquierda=467
+PosicionInicialArriba=315
+PosicionInicialAlturaCliente=66
+PosicionInicialAncho=382
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=por Diseño
+VentanaExclusiva=S
+VentanaEstadoInicial=Normal
+VentanaExclusivaOpcion=2
+Mensaje=<T>¿Desea usar su tarjeta America Club?<T>
+[Acciones.Si]
+Nombre=Si
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=Si
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=fmxRegistrarTarjeta
+Activo=S
+Visible=S
+
+[Acciones.Obtener]
+Nombre=Obtener
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Obtener
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=fmxGetNuevaTarjeta
+Activo=S
+Visible=S
+
+
+
+
+
+
+
+[Dialogo.ListaAcciones]
+(Inicio)=Si
+Si=Obtener
+Obtener=(Fin)

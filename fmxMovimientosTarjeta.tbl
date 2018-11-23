@@ -1,0 +1,72 @@
+
+[Tabla]
+Icono=0
+Clave=fmxMovimientosTarjeta
+Nombre=fmxMovimientosTarjeta
+Archivo=fmxMovimientosTarjeta
+Modulos=(Todos)
+Singular=fmxMovimientosTarjeta
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+LlavePrimaria=Movimiento
+SQL=(Lista)
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=10
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT Mov FROM MovTipo WHERE Modulo=:t1 AND Clave=:t2<T>,<T>VTAS<T>,<T>VTAS.F<T>)
+[Activacion]
+Clave=Activacion
+Nombre=Activacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+[Renovacion]
+Clave=Renovacion
+Nombre=Renovacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+
+
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+
+
+
+
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=Movimiento
+Movimiento=Activacion
+Activacion=Renovacion
+Renovacion=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Movimiento,
+Movimiento,=Activacion,
+Activacion,=Renovacion
+Renovacion=FROM fmxMovimientosTarjeta
+FROM fmxMovimientosTarjeta=(Fin)

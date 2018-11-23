@@ -1,0 +1,49 @@
+
+[Vista]
+Icono=0
+Clave=SVCfgLCProvExcluidos
+Nombre=SVCfgLCProvExcluidos
+Modulos=(Todos)
+Singular=SVCfgLCProvExcluidos
+ListaTablas=SVCfgLCProvExcluidos
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=SVCfgLCProvExcluidos.Proveedor
+TablaPrincipal=SVCfgLCProvExcluidos
+ListaCalculados=NomProv
+SQL=(Lista)
+[SVCfgLCProvExcluidos.Proveedor]
+Clave=SVCfgLCProvExcluidos.Proveedor
+Nombre=Proveedor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+LigaTabla=SVCfgLCProvExcluidos
+LigaCampo=Proveedor
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Proveedor
+
+
+[NomProv]
+Clave=NomProv
+TipoDatos=Texto
+Tamano=100
+TipoCampo=Calculado
+TamanoValidacion=25
+Alineacion=por Omisión
+Nombre=Nombre Proveedor
+
+Formula=SQL(<T>SELECT Nombre From Prov WHERE Proveedor=:t<T>,SVCfgLCProvExcluidos.Proveedor)
+
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=SVCfgLCProvExcluidos.Proveedor
+SVCfgLCProvExcluidos.Proveedor=FROM SVCfgLCProvExcluidos
+FROM SVCfgLCProvExcluidos=(Fin)
